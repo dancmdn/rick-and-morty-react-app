@@ -1,0 +1,23 @@
+.character-card {
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+	box-shadow: 0 0 6px 0 rgba(0,0,0,0.2);
+	margin: 0 15px 40px;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: box-shadow 0.3s ease;
+}
+.character-card__img {
+	height: 200px;
+	width: 200px;
+	border-radius: 8px 8px 0 0;
+}
+.character-card__name {
+	padding: 5px 10px;
+	font-size: 16px;
+}
+
+.character-card:hover {	
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+}
