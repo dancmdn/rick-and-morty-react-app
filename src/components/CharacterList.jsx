@@ -6,7 +6,6 @@ import './CharacterList.css';
 const CharacterList = ({ data }) => {
 
 	const router = useHistory(); 
-	console.log(router);
 	
 	return (
 		data.map((character) =>
