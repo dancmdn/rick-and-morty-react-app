@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import ApiService from '../components/API/ApiService';
 import CharacterList from '../components/CharacterList';
 import Loader from '../components/UI/Loader/Loader';
-import MyInput from '../components/UI/MyInput/MyInput';
+import SearchForm from '../components/UI/SearchForm/SearchForm';
 import { useFetching } from '../hooks/useFetching';
 
 const Character = () => {
@@ -56,9 +56,9 @@ const Character = () => {
 
 	return (
 		<div className="_container">
-			<MyInput
-				inputValue={inputValue}
-				inputValueChanger={event => setInputValue(event.target.value)}
+			<SearchForm 
+				value={inputValue}
+				onChange={event => setInputValue(event.target.value)}
 				onSearch={onSearch}
 				placeholder='Search for character'
 			/>

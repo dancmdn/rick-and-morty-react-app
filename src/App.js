@@ -1,5 +1,5 @@
 import React, {  } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, HashRouter } from "react-router-dom";
 import Character from "./pages/Character";
 import Location from "./pages/Location";
 import Episode from "./pages/Episode";
@@ -9,13 +9,13 @@ import CharacterId from "./pages/CharacterId";
 function App() {
   return (
     <div>
-      <BrowserRouter className="browser-router">
+      <HashRouter basename="/" className="browser-router">
         <Navbar />
         <Switch>
           <Route exact path="/character">
             <Character />
           </Route>
-          <Route exact path="/character/:id">
+          <Route path="/character/:id">
             <CharacterId />
           </Route> 
           <Route path="/location">
@@ -26,7 +26,7 @@ function App() {
           </Route>
           <Redirect to="/character" />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

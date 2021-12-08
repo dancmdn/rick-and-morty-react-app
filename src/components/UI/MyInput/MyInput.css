@@ -1,7 +1,17 @@
 .my-input {
-	width: 300px;
-	line-height: 24px;
+	width: 100%;
 	font-size: 14px;
-	padding: 0 15px;
-	margin-top: 20px;
+	padding: 5px 15px;
+	border-radius: 0;
+	border: 1px solid #bdbdbd;
+	margin-right: 10px;
+}
+.my-input::placeholder {
+	color: #bdbdbd;
+}
+.my-input:focus {
+	border-radius: 0;
+	border: 1px solid #8bcf21;
+	outline: none;
+
 }
