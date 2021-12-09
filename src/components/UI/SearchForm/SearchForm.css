@@ -1,6 +1,7 @@
 .search-form {
-	margin-top: 20px;
-	width: 320px;
+	margin: 40px auto 0;
+	min-width: 320px;
+	max-width: 600px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

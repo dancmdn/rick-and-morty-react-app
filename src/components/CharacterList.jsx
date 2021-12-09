@@ -1,19 +1,23 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
+import { useFetching } from '../hooks/useFetching';
+import CharacterCard from './CharacterCard';
 
 import './CharacterList.css';
 
 const CharacterList = ({ data }) => {
 
-	const router = useHistory(); 
-	
+	const router = useHistory();
+
 	return (
-		data.map((character) =>
-			<div className="character-card" key={character.id} onClick={() => router.push(`/character/${character.id}`)}>
-				<img className="character-card__img" src={character.image} alt={character.name} />
-				<div className="character-card__name">{character.name}</div>
-			</div>
-		)
+		<div className="character__list">
+			{data.map((character) =>
+				<CharacterCard 
+					props={character}
+					router={router}
+				/>
+			)}
+		</div>
 	);
 };
 

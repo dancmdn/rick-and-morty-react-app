@@ -1,25 +1,17 @@
 .navbar {
-	box-shadow: 0 0 6px 0 rgba(0,0,0,0.33);
 }
-.navbar__container {
-	height: 60px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-}
-.navbar__logo {}
-.navbar__links a {
+.navbar a {
 	color: inherit;
 	text-decoration: none;
+	font-size: 18px;
 	font-weight: bold;
 }
-.navbar__links a:not(:last-child) {
+.navbar a:not(:last-child) {
 	margin-right: 30px;
 }
-.navbar__links a:hover {
+.navbar a:hover {
 	color: #ff9800;
 }
-.navbar__links a.active {
+.navbar a.active {
 	color: #ff9800;
 }

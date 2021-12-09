@@ -1,12 +1,16 @@
 .my-btn {
-	border: 1px solid #2f9331;
-	background: #fff;
-	color: #2f9331;
-	padding: 5px 15px;
-	font-size: 14px;
+	border: 1px solid #202328;
+	background: #3b3e43;
+	color: #202328;
+	padding: 8px 15px;
+	border-radius: 10px;
+	font-size: 18px;
 	font-weight: bold;
+	cursor: pointer;
 }
 .my-btn:hover {
-	border-color: #8bcf21;
-	color: #8bcf21;
+	border-color: #ff9800;
+	box-shadow: inset 0 0 0 1px #ff9800;
+	color: #ff9800;
+	/* background: #5f5d59; */
 }

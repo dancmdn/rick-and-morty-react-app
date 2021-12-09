@@ -14,7 +14,6 @@ const Character = () => {
 	const clearDataToggler = useRef(false);
 
 	const [fetchCharacter, isLoading, dataError] = useFetching(async () => {
-		console.log('PAGE: ', page);
 		let response;
 		if (clearDataToggler.current) {
 			response = await ApiService.getCharacter(inputValue, 1);
@@ -39,8 +38,6 @@ const Character = () => {
 		if (observer.current) observer.current.disconnect();
 		const callback = async function (entries, observer) {
 			if (entries[0].isIntersecting && page < totalPages) {
-				console.log('observed page: ', page, 'of total: ', totalPages);
-				console.log('*************************************************');
 				clearDataToggler.current = false;
 				setPage(page + 1);
 			}
