@@ -11,7 +11,7 @@ export default class ApiService {
 		return response;
 	}
 
-	static async getEpisodeDataByFullAdress(link) {
+	static async getDataByFullAdress(link) {
 		const response = await axios.get(`${link}`);
 		return response;
 	}

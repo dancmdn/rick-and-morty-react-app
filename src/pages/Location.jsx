@@ -1,9 +1,10 @@
 import React from 'react';
+import Loader from '../components/UI/Loader/Loader';
 
 const Location = () => {
 	return (
 		<div>
-			Location
+			<Loader />
 		</div>
 	);
 };

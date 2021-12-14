@@ -3,6 +3,7 @@ import ApiService from '../components/API/ApiService';
 import CharacterList from '../components/CharacterList';
 import Loader from '../components/UI/Loader/Loader';
 import SearchForm from '../components/UI/SearchForm/SearchForm';
+import TransitionElement from '../components/UI/TransitionElement/TransitionElement';
 import { useFetching } from '../hooks/useFetching';
 
 const Character = () => {
@@ -19,7 +20,7 @@ const Character = () => {
 			response = await ApiService.getCharacter(inputValue, 1);
 			setData(response.data.results);
 			setPage(1);
-		}	else {
+		} else {
 			response = await ApiService.getCharacter(inputValue, page);
 			setData([...data, ...response.data.results]);
 		}
@@ -34,7 +35,7 @@ const Character = () => {
 	const observer = useRef();
 
 	useEffect(() => {
-		if (isLoading) return;
+		if (isLoading || dataError) return;
 		if (observer.current) observer.current.disconnect();
 		const callback = async function (entries, observer) {
 			if (entries[0].isIntersecting && page < totalPages) {
@@ -53,7 +54,7 @@ const Character = () => {
 
 	return (
 		<div className="_container">
-			<SearchForm 
+			<SearchForm
 				value={inputValue}
 				onChange={event => setInputValue(event.target.value)}
 				onSearch={onSearch}
@@ -61,15 +62,24 @@ const Character = () => {
 			/>
 			<div className="main-content">
 				{dataError &&
-					<div style={{ height: '100vh' }}><h1>There is no such character!</h1></div>
+					<TransitionElement>
+						<h1>There is no such character!</h1>
+					</TransitionElement>
 				}
 				{isLoading
 					? <Loader />
-					: <CharacterList data={dataError ? [] : data} />
+					: <div>
+						<CharacterList data={dataError ? [] : data} />
+						{dataError 
+							? ""
+							: <div ref={lastElement} style={{ height: '20px', background: '#ccc' }}></div>
+						}
+						
+					</div>
 				}
 			</div>
 
-			<div ref={lastElement} style={{ height: '20px', background: '#ccc' }}></div>
+			{/* <div ref={lastElement} style={{ height: '20px', background: '#ccc' }}></div> */}
 		</div>
 	);
 };

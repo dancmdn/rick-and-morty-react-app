@@ -1,6 +1,5 @@
-import React from 'react';
+import { React, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react/cjs/react.development';
 import ApiService from '../components/API/ApiService';
 import Loader from '../components/UI/Loader/Loader';
 import { useFetching } from '../hooks/useFetching';

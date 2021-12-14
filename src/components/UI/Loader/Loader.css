@@ -1,18 +1,25 @@
 .loader-container {
-	height: 100vh;
+	box-sizing: border-box;
+	min-height: 100vh;
+	padding-top: 50px;
+	display: flex;
+	justify-content: center;
 }
+
 .loader {
-	width: 150px;
-	height: 150px;
+	width: 15vh;
+	height: 15vh;
 	border-radius: 50%;
-	border: 2px dashed green	;
-	animation: spin 1s linear;
+	border: 1vh solid rgba(255, 255, 255, 0.1);
+	border-top: 1vh solid #ff9800;
+	animation: spin 1s linear infinite;
 }
+
 @keyframes spin {
 	from {
 		transform: rotate(0deg);
 	}
 	to {
-		transform: rotate(60deg);
+		transform: rotate(360deg);
 	}
 }

@@ -32,6 +32,37 @@ code {
   min-height: 100vh;
 }
 
-.app-content__main {
+.page {
 	min-height: calc(100vh - 60px - 100px);
+  /* position: absolute; */
+}
+
+.page-enter-active {
+  animation: fade-in 1s forwards;
+}
+
+.page-exit-active {
+  animation: fade-out 1s forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(300px);
+  }
 }

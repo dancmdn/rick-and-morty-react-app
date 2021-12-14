@@ -2,18 +2,26 @@ import React from 'react';
 import { useState, useEffect } from 'react/cjs/react.development';
 import ApiService from './API/ApiService';
 import './CharacterCard.css';
+import TransitionElement from './UI/TransitionElement/TransitionElement';
 
 const CharacterCard = ({ props, router }) => {
 	const [episode, setEpisode] = useState({});
+	const [location, setLocation] = useState({});
 
 	useEffect(() => {
-		fetchEpisodeName()
+		fetchEpisode();
+		fetchLocation();
 	}, [])
 
-	async function fetchEpisodeName() {
-		const response = await ApiService.getEpisodeDataByFullAdress(props.episode[0]);
+	async function fetchEpisode() {
+		const response = await ApiService.getDataByFullAdress(props.episode[0]);
 		setEpisode(response.data);
-	} 
+	}
+
+	async function fetchLocation() {
+		const response = await ApiService.getDataByFullAdress(props.location.url);
+		setLocation(response.data);
+	}
 
 	function statusColor(status) {
 		status = status.toLowerCase('')
@@ -31,7 +39,8 @@ const CharacterCard = ({ props, router }) => {
 	}
 
 	return (
-		<div className="character__card card-character" key={props.id}>
+		<TransitionElement>
+		<div className="character__card card-character">
 			<div className="card-character__img">
 				<img src={props.image} alt={props.name} />
 			</div>
@@ -42,7 +51,7 @@ const CharacterCard = ({ props, router }) => {
 					</div>
 					<div className="card-character__status">
 						<span className="circle">
-							<i style={{color:statusColor(props.status)}} className="fas fa-circle"></i>
+							<i style={{ color: statusColor(props.status) }} className="fas fa-circle"></i>
 						</span>
 						{' '} {firstLetterToUpperCase(props.status)} - {props.species}
 						{props.type ? ` - ${props.type}` : ''}
@@ -53,7 +62,12 @@ const CharacterCard = ({ props, router }) => {
 						Last known location:
 					</div>
 					<div className="card-character__link">
-						{props.location.name}
+						{location
+							? <div onClick={() => router.push(`/location/${location.id}`)}>
+								{props.location.name}
+							</div>
+							: '...'
+						}
 					</div>
 				</div>
 				<div>
@@ -62,13 +76,14 @@ const CharacterCard = ({ props, router }) => {
 					</div>
 					<div className="card-character__link">
 						{episode
-							? episode.name
+							? <div onClick={() => router.push(`/episode/${episode.id}`)}>{episode.name}</div>
 							: '...'
 						}
 					</div>
 				</div>
 			</div>
 		</div>
+		</TransitionElement>
 	);
 };
 
